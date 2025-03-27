@@ -35,6 +35,7 @@
 //     }
 // }
 
+
   //  TABULAR FORM
 class Solution {
     public static boolean canPartition(int[] nums) {
@@ -47,9 +48,6 @@ class Solution {
         }
         int target = totalsum / 2;
         boolean[][] dp=new boolean[n+1][target+1];
-        // for (int[] row : dp) {
-        //     Arrays.fill(row, -1);
-        // }
         for(int i=0;i<n+1;i++){
             for(int j=0;j<target+1;j++){
                 if(i==0){
