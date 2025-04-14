@@ -1,0 +1,45 @@
+class Solution {
+    public int rob(int[] nums) {
+        int n=nums.length;
+        if(n==1)
+        return nums[0];
+        
+        int[] arr1=new int[n-1];
+        int[] arr2=new int[n-1];
+        int l=0,h=0;
+        for(int i=0; i<n; i++){
+            
+            if(i!=0){
+                arr1[l]=nums[i];
+                l++;
+            }
+            if(i!=n-1){
+                arr2[h]=nums[i];
+                h++;
+            }
+        }
+        
+        int ans1 = solve(arr1);
+        int ans2 = solve(arr2);
+        
+        return Math.max(ans1,ans2);
+    }
+    public static int solve(int[] arr){
+        int n = arr.length;
+        int prev = arr[0];
+        int prev2 =0;
+        
+        for(int i=1; i<n; i++){
+            int pick = arr[i];
+            if(i>1)
+                pick += prev2;
+            int nonPick = 0 + prev;
+            
+            int cur_i = Math.max(pick, nonPick);
+            prev2 = prev;
+            prev= cur_i;
+            
+        }
+        return prev;
+    }
+}
